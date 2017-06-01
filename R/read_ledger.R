@@ -11,13 +11,14 @@
 #' read_ledger("'^assets' '^liab' -X $", file = demo)
 read_ledger <- function(report_query, file = Sys.getenv("LEDGER_FILE")){
   lines <- system2("ledger", c(paste0("csv ", report_query),
-                              paste0("-f ", file)),
+                              paste0("-f ", file),
+                              "--date-format '%F'"),
                   stdout = TRUE)
   conn <- textConnection(lines)
   df <- read.csv(conn, header = FALSE)
   close(conn)
   df <- df[, c(1, 3, 4, 5, 6, 8)]
   names(df) <- c("date", "payee", "account", "commodity", "amount", "note")
-  df$date <- as.Date(df$date)
+  df$date <- as.POSIXct(df$date)
   return(df)
 }
