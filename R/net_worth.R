@@ -11,10 +11,10 @@ net_worth <- function(data, start = NA, end = Sys.Date()){
   if (!requireNamespace("ggplot2", quietly = TRUE)){
     stop("ggplot2 not found!")
   }
-  start <- as.Date(start)
-  end <- as.Date(end)
+  start <- as.POSIXct(start)
+  end <- as.POSIXct(end)
   g <- ggplot2::ggplot(data, ggplot2::aes(date, cumulative))
   g <- g + ggplot2::geom_line()
-  g <- g + ggplot2::scale_x_date(limits = c(start, end))
+  g <- g + ggplot2::scale_x_datetime(limits = c(start, end))
   return(g)
 }
