@@ -15,7 +15,7 @@ time_aggregate <- function(data, cumulative = FALSE, aggregate = "day"){
   data <- dplyr::summarize_(dplyr::group_by_(data, "date"),
                            "amount" = ~ sum(amount))
   if(cumulative){
-    data$cumulative <- cumsum(df$amount)
+    data$cumulative <- cumsum(data$amount)
   }
   return(data)
 }
