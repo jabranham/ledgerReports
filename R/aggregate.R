@@ -10,6 +10,7 @@
 #' demo <- system.file("extdata", "demo.ledger", package="ledgerReports")
 #' ledge <- read_ledger("'^assets' '^liab' -X $", file = demo)
 #' time_aggregate(ledge, cumulative = TRUE)
+#' @export
 time_aggregate <- function(data, cumulative = FALSE, aggregate = "day"){
   data$date <- lubridate::floor_date(data$date, unit = aggregate)
   data <- dplyr::summarize_(dplyr::group_by_(data, "date"),

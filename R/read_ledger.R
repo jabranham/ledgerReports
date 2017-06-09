@@ -9,6 +9,7 @@
 #' @examples
 #' demo <- system.file("extdata", "demo.ledger", package="ledgerReports")
 #' read_ledger("'^assets' '^liab' -X $", file = demo)
+#' @export
 read_ledger <- function(report_query, file = Sys.getenv("LEDGER_FILE")){
   lines <- system2("ledger", c(paste0("csv ", report_query),
                               paste0("-f ", file),

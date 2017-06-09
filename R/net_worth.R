@@ -7,6 +7,7 @@
 #'   series
 #' @param end the end date (e.g. "2017-12-31"), defaults to today
 #' @return a "ggplot2" graph object
+#' @export
 net_worth <- function(data, start = NA, end = Sys.Date()){
   if (!requireNamespace("ggplot2", quietly = TRUE)){
     stop("ggplot2 not found!")
