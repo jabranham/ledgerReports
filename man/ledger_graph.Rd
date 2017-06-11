@@ -23,6 +23,10 @@ Helper function to graph net worth over time
 }
 \examples{
 demo <- system.file("extdata", "demo.ledger", package="ledgerReports")
+## plot net worth over time:
+ledge <- read_ledger("'^assets' '^liab' -X $", file = demo)
+ledger_graph(ledge, end = "2011-12-02", cumulative = TRUE)
+## plot assets vs expenses separately:
 ledge <- read_ledger("'^assets' '^exp' -X $", file = demo)
-ledger_graph(ledge, end = "2012-01-01")
+ledger_graph(ledge, separate = TRUE, end="2011-12-02")
 }
