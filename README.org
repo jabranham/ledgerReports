@@ -3,3 +3,13 @@
 #+AUTHOR:    J. Alexander Branham
 
 This is a package that integrates [[http://ledger-cli.org][ledger]] into R. It's a work in progress and liable to break and change. Feel free to use github's "issues" system to ask a question.
+
+* Functions
+- =read_ledger= :: can read ledger files and return an R data.frame. You must have =ledger= installed in order to use this
+- =ledger_graph= :: produces some pretty plots from ledger data
+- =time_aggregate= :: helper function to aggregate ledger data
+
+* How to install
+#+BEGIN_SRC R
+  devtools::install_github("jabranham/ledgerReports")
+#+END_SRC
