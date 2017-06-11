@@ -4,7 +4,7 @@
 \alias{time_aggregate}
 \title{Aggregate ledger data.frames by time blocks}
 \usage{
-time_aggregate(data, cumulative = FALSE, aggregate = "day")
+time_aggregate(data, cumulative = FALSE, aggregate = "day", split = FALSE)
 }
 \arguments{
 \item{data, }{the data file (usually produced by \code{read_ledger})}
