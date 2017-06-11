@@ -1,3 +1,19 @@
+; Declare accounts
+account Assets:Checking
+account Assets:Savings
+account Equity:Opening Balances
+account Expenses:Auto
+account Expenses:Books
+account Expenses:Escrow
+account Expenses:Food:Groceries
+account Expenses:Interest:Mortgage
+account Income:Salary
+account Income:Sales
+account Liabilities:MasterCard
+account Liabilities:Mortgage:Principal
+tag nobudget
+tag hastag
+
 2010/12/01 * Checking balance
   Assets:Checking                   $1,000.00
   Equity:Opening Balances
