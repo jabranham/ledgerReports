@@ -21,6 +21,7 @@ read_ledger <- function(report_query, file = Sys.getenv("LEDGER_FILE")){
   df <- df[, c(1, 3, 4, 5, 6, 8)]
   names(df) <- c("date", "payee", "account", "commodity", "amount", "note")
   df$amount <- as.numeric(df$amount)
+  df$date <- as.Date(df$date)
   df$date <- as.POSIXct(df$date)
   return(df)
 }
