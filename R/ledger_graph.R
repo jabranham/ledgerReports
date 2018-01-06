@@ -27,23 +27,25 @@ ledger_graph <- function(data, start = NA, end = Sys.Date(),
   data <- time_aggregate(data, cumulative = cumulative,
                         aggregate = aggregate, split = separate)
   ## Remove two "accounts" that aren't real
-  if(separate){
-    data <- dplyr::filter_(data, ~ !account %in% c("<Adjustment>", "<Revalued>"))
+  if (separate){
+    data <- dplyr::filter_(data,
+                          ~ !account %in% c("<Adjustment>", "<Revalued>"))
   }
   ## Drop data before start and after end, otherwise ggplot uses amounts to
   ## scale y-axis which can look weird:
   data <- dplyr::filter_(data, ~ date < end)
-  if(!is.na(start)){
+  if (!is.na(start)){
     data <- dplyr::filter_(data, ~ date > start)
   }
 
   ## Start the plot. We have four conditions:
   ## separate accounts TRUE/FALSE and cumulative TRUE/FALSE
   if(separate & cumulative){
-    g <- ggplot2::ggplot(data, ggplot2::aes(date, cumulative, linetype = account))
-  } else if(separate & !cumulative){
+    g <- ggplot2::ggplot(data,
+                        ggplot2::aes(date, cumulative, linetype = account))
+  } else if (separate & !cumulative){
     g <- ggplot2::ggplot(data, ggplot2::aes(date, amount, linetype = account))
-  } else if(!separate & cumulative){
+  } else if (!separate & cumulative){
     g <- ggplot2::ggplot(data, ggplot2::aes(date, cumulative))
   } else{
     g <- ggplot2::ggplot(data, ggplot2::aes(date, amount))
